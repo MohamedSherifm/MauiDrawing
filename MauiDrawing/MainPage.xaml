@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MauiDrawing.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:MauiDrawing.Controls"
+    xmlns:models="clr-namespace:MauiDrawing.Models"
+    xmlns:viewmodels="clr-namespace:MauiDrawing.ViewModels"
+    x:DataType="viewmodels:MainViewModel">
+
+
+    <Grid RowDefinitions="*, Auto, Auto">
+        <CollectionView ItemsSource="{Binding Items}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="models:Item">
+                    <Grid>
+                        <controls:CustomBorder Margin="4" />
+                        <Border
+                            Margin="8"
+                            Padding="4"
+                            Background="White"
+                            StrokeShape="RoundRectangle 10"
+                            StrokeThickness="0">
+                            <Label
+                                HorizontalOptions="CenterAndExpand"
+                                Text="{Binding Name}"
+                                TextColor="Black" />
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button
+            Grid.Row="1"
+            Margin="4"
+            Clicked="Button_Clicked"
+            Command="{Binding AddItemCommand}"
+            Text="Add Item" />
+
+        <Path
+            x:Name="myPath"
+            Grid.Row="2"
+            Margin="5"
+            Data="M13.908992,16.207977 L32.000049,16.207977 32.000049,31.999985 13.908992,30.109983Z"
+            HeightRequest="50"
+            Stroke="Red"
+            StrokeThickness="5"
+            WidthRequest="50" />
+        <Border
+            x:Name="MaskBorder"
+            Grid.Row="2"
+            Background="White"
+            HeightRequest="50"
+            StrokeThickness="0"
+            VerticalOptions="Start"
+            WidthRequest="50" />
+
+    </Grid>
+
+
+
+</ContentPage>
